@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+       layout:decorate="~{layouts/authenticate.html}">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}"> Edit View </title>
+</head>
+<body>
+
+    <div layout:fragment="content" >
+
+
+
+        <!-- Add Details Form -->
+        <div class="card mb-4" >
+            <div class="card-header bi-plus">Add <span th:text="${balanceEditForm.header.type}"> </span></div>
+
+            <div class="card-body">
+              <form th:action="@{/user/balance-edit/item}" th:object="${balanceItemForm}" class="row" method="post">
+                  <div class="col-4">
+                      <input th:field="*{item}" type="text" class="form-control" placeholder="Enter the Item Name"/>
+                        <span th:errors="*{item}" class="text-secondary"></span>
+                  </div>
+                  <div class="col-2">
+                      <input th:field="*{quantity}" type="number" placeholder="Quantity" class="form-control"/>
+                        <span th:errors="*{quantity}" class="text-secondary"></span>
+                  </div>
+                  <div class="col-2">
+                      <input th:field="*{uniPrice}" type="number" placeholder="Unit Price" class="form-control"/>
+                        <span class="text-secondary" th:errors="*{uniPrice}"></span>
+                  </div>
+                  <div class="col" >
+                      <button class="btn btn-outline-primary bi-plus"> Add Item</button>
+                      <a th:if="${balanceEditForm.showSaveButton}"  th:href="@{/user/balance-edit/confirm}" class="btn btn-outline-secondary bi-arrow-right" > Next</a>
+                  </div>
+              </form>
+            </div>
+        </div>
+
+        <!-- Details List -->
+
+        <div th:replace="~{fragments/components :: balanceDetailsList(${balanceEditForm} , true)}">
+
+        </div>
+    </div>
+</body>
+</html>

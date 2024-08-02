@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layouts/authenticate.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Log</title>
+</head>
+<body>
+
+        <div layout:fragment="content">
+                <div class="card">
+                    <div class="card-header">
+                        Access Logs
+                    </div>
+                    <form th:action="@{/admin/accesses}" class="card-body">
+                        <div class="row">
+                            <div class="col-auto">
+                                <select class="form-control" name="type" id="type">
+                                    <option  value="">All</option>
+                                    <option th:each="type : ${types}"
+                                            th:text="${type}"
+                                            th:selected="${paramType == type.name()}"
+                                            th:value="${type.name()}" ></option>
+                                </select>
+                            </div>
+                            <div class="col-auto">
+                                <input type="text" name="username" th:value="${paramuUsername}"  placeholder="Search Name" class="form-control">
+                            </div>
+
+                            <div class="col-auto">
+                                <input type="date" name="date" th:value="${paramDate}" class="form-control">
+                            </div>
+
+                            <div class="col">
+                                <button class="btn btn-primary">
+                                    <i class="bi-search"></i> Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            <table class="table table-striped mt-4">
+                <thead>
+                    <tr>
+                        <th>User Name</th>
+                        <th>Access Times</th>
+                        <th>Access Type</th>
+                        <th>Message</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each=" logs : ${list}">
+                        <td th:text="${logs.username}"> User Name</td>
+                        <td th:text="${#temporals.format(logs.accessTime,'yyyy-MM-dd HH:mm:ss')}"> Access Times </td>
+                        <td th:text="${logs.accessType}"> Access Type</td>
+                        <td th:text="${logs.errorMessage}"> Message</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div th:include="~{fragments/components :: pagination(${pager})}"></div>
+        </div>
+</body>
+</html>
