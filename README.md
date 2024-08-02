@@ -1,8 +1,9 @@
 # balance-app
 
 # Project Description
-demonstrates a web application with user and admin role-based authorization. 
-user registration, login , and redirection based on user roles 
+
+This project demonstrates a web application with user and admin role-based authorization
+including user registration, login , and redirection based on user roles.
 use Spring security to manage authentication and authorization and Thymeleaf for rendering web pages
 
 ## Features
