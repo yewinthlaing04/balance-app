@@ -8,19 +8,19 @@ use Spring security to manage authentication and authorization and Thymeleaf for
 
 ## Features
 
-** User Registration with username , password , email 
-** User Login
-** User Management 
-** User Balance Management 
+- User Registration with username , password , email
+- User Login
+- User Management
+- User Balance Management 
 
 ## Technologies Used 
 
-** Spring boot
-** Java 
-** Spring Data JPA 
-** Spring Security
-** MySql Driver
-** Thymeleaf
-** BCrypt Password Encoding 
-** HTML 
-** Bootstrap
+- Spring boot
+- Java 
+- Spring Data JPA 
+- Spring Security
+- MySql Driver
+- Thymeleaf
+- BCrypt Password Encoding 
+- HTML 
+- Bootstrap
